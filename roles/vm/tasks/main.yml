@@ -1,2 +1,3 @@
 - include: ceph-admin.yml
 - include: mon1.yml
+- include: osd1.yml

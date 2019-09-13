@@ -4,7 +4,7 @@
     dest: /tmp/ceph-admin.xml
   vars:
     name: ceph-admin
-    qcow2File: /opt/vm/ceph-admin.qcow2
+    qcow2Files: ["/opt/vm/ceph-admin.qcow2"]
     memory: 2097152
     vcpu: 2
     bridge: internal

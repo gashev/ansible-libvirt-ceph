@@ -4,7 +4,7 @@
     dest: /tmp/mon1.xml
   vars:
     name: mon1
-    qcow2File: /opt/vm/mon1.qcow2
+    qcow2Files: ["/opt/vm/mon1.qcow2"]
     memory: 2097152
     vcpu: 2
     bridge: internal
