@@ -1,0 +1,23 @@
+- name: xml file for mon1 vm
+  template:
+    src: vm-template.xml.j2
+    dest: /tmp/mon1.xml
+  vars:
+    name: mon1
+    qcow2File: /opt/vm/mon1.qcow2
+    memory: 2097152
+    vcpu: 2
+    bridge: internal
+    macAddress: 52:54:00:38:fd:aa
+
+- name: define vm mon1
+  virt:
+    name: mon1
+    command: define
+    uri: qemu:///system
+    xml: "{{ lookup('file', '/tmp/mon1.xml') }}"
+
+- name: start vm mon1
+  virt:
+      name: mon1
+      state: running
