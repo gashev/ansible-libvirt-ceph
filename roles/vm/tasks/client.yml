@@ -1,0 +1,23 @@
+- name: xml file for client vm
+  template:
+    src: vm-template.xml.j2
+    dest: /tmp/client.xml
+  vars:
+    name: client
+    qcow2Files: ["/opt/vm/client.qcow2"]
+    memory: 2097152
+    vcpu: 2
+    bridge: internal
+    macAddress: 52:54:00:38:fd:c0
+
+- name: define vm client
+  virt:
+    name: client
+    command: define
+    uri: qemu:///system
+    xml: "{{ lookup('file', '/tmp/client.xml') }}"
+
+- name: start vm client
+  virt:
+      name: client
+      state: running

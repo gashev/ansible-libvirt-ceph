@@ -1,0 +1,23 @@
+- name: xml file for osd{{id}} vm
+  template:
+    src: vm-template.xml.j2
+    dest: /tmp/osd{{id}}.xml
+  vars:
+    name: osd{{id}}
+    qcow2Files: ["/opt/vm/osd{{id}}.qcow2", "/opt/vm/osd{{id}}-2.qcow2"]
+    memory: 2097152
+    vcpu: 2
+    bridge: internal
+    macAddress: 52:54:00:38:fd:b{{id}}
+
+- name: define vm osd{{id}}
+  virt:
+    name: osd{{id}}
+    command: define
+    uri: qemu:///system
+    xml: "{{ lookup('file', '/tmp/osd{{id}}.xml') }}"
+
+- name: start vm osd{{id}}
+  virt:
+      name: osd{{id}}
+      state: running

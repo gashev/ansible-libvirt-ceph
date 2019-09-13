@@ -1,3 +1,6 @@
 - include: ceph-admin.yml
 - include: mon1.yml
-- include: osd1.yml
+- include: osd.yml id=1
+- include: osd.yml id=2
+- include: osd.yml id=3
+- include: client.yml
