@@ -1,0 +1,4 @@
+- name: define vm
+  hosts: localhost
+  roles:
+    - vm

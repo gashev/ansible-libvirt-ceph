@@ -1,0 +1,48 @@
+- name: xml file for ceph-admin vm
+  template:
+    src: vm-template.xml.j2
+    dest: /tmp/ceph-admin.xml
+  vars:
+    name: ceph-admin
+    qcow2File: /opt/vm/ceph-admin.qcow2
+    memory: 2097152
+    vcpu: 2
+    bridge: internal
+    macAddress: 52:54:00:38:fd:a9
+
+- name: define vm ceph-admin
+  virt:
+    name: ceph-admin
+    command: define
+    uri: qemu:///system
+    xml: "{{ lookup('file', '/tmp/ceph-admin.xml') }}"
+
+- name: start vm ceph-admin
+  virt:
+      name: ceph-admin
+      state: running
+
+
+- name: xml file for mon1 vm
+  template:
+    src: vm-template.xml.j2
+    dest: /tmp/mon1.xml
+  vars:
+    name: mon1
+    qcow2File: /opt/vm/mon1.qcow2
+    memory: 2097152
+    vcpu: 2
+    bridge: internal
+    macAddress: 52:54:00:38:fd:aa
+
+- name: define vm mon1
+  virt:
+    name: mon1
+    command: define
+    uri: qemu:///system
+    xml: "{{ lookup('file', '/tmp/mon1.xml') }}"
+
+- name: start vm mon1
+  virt:
+      name: mon1
+      state: running
