@@ -4,10 +4,11 @@
     dest: /tmp/client.xml
   vars:
     name: client
+    emulator: /usr/libexec/qemu-kvm
     qcow2Files: ["/opt/vm/client.qcow2"]
     memory: 2097152
     vcpu: 2
-    bridge: internal
+    bridge: br0
     macAddress: 52:54:00:38:fd:c0
 
 - name: define vm client

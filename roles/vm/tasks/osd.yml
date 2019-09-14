@@ -4,10 +4,11 @@
     dest: /tmp/osd{{id}}.xml
   vars:
     name: osd{{id}}
+    emulator: /usr/libexec/qemu-kvm
     qcow2Files: ["/opt/vm/osd{{id}}.qcow2", "/opt/vm/osd{{id}}-2.qcow2"]
     memory: 2097152
     vcpu: 2
-    bridge: internal
+    bridge: br0
     macAddress: 52:54:00:38:fd:b{{id}}
 
 - name: define vm osd{{id}}

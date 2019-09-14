@@ -4,10 +4,11 @@
     dest: /tmp/ceph-admin.xml
   vars:
     name: ceph-admin
+    emulator: /usr/libexec/qemu-kvm
     qcow2Files: ["/opt/vm/ceph-admin.qcow2"]
     memory: 2097152
     vcpu: 2
-    bridge: internal
+    bridge: br0
     macAddress: 52:54:00:38:fd:a9
 
 - name: define vm ceph-admin

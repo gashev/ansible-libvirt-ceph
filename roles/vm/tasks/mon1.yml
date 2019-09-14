@@ -4,10 +4,11 @@
     dest: /tmp/mon1.xml
   vars:
     name: mon1
+    emulator: /usr/libexec/qemu-kvm
     qcow2Files: ["/opt/vm/mon1.qcow2"]
     memory: 2097152
     vcpu: 2
-    bridge: internal
+    bridge: br0
     macAddress: 52:54:00:38:fd:aa
 
 - name: define vm mon1

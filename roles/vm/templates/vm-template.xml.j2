@@ -4,13 +4,12 @@
   <currentMemory>{{memory}}</currentMemory>
   <vcpu>{{vcpu}}</vcpu>
   <os>
-    <type arch="x86_64" machine="pc-i440fx-3.1">hvm</type>
+    <type arch="x86_64">hvm</type>
     <boot dev="hd"/>
   </os>
   <features>
     <acpi/>
     <apic/>
-    <vmport state="off"/>
   </features>
   <cpu mode="host-model"/>
   <clock offset="utc">
@@ -23,7 +22,7 @@
     <suspend-to-disk enabled="no"/>
   </pm>
   <devices>
-    <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    <emulator>{{emulator}}</emulator>
     {% set names="abcdefghijklmnopqrstuvwxyz" %}
     {% for qcow2File in qcow2Files %}
     <disk type="file" device="disk">
